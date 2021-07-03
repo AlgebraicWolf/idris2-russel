@@ -30,8 +30,11 @@ setInRusselSetNotContainsItself (MkDPair (MkDPair fst y) snd) z = y (rewrite sym
 russelSetIsNotInRusselSet : notIsElement RusselSet RusselSet
 russelSetIsNotInRusselSet x = (setInRusselSetNotContainsItself x) x 
 
+russelSetIsInRusselSet : isElement RusselSet RusselSet
+russelSetIsInRusselSet = setIsInRusselSet russelSetIsNotInRusselSet
+
 -- However, by the definition of the Russel set that means that Russel set contains
 -- itself, leading to a contradiction. We can use this to construct term of Void.
 falso : Void
-falso = russelSetIsNotInRusselSet (setIsInRusselSet russelSetIsNotInRusselSet)
+falso = russelSetIsNotInRusselSet russelSetIsInRusselSet
 
