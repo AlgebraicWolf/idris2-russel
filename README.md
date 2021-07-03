@@ -56,5 +56,8 @@ falso : Void
 falso = russelSetIsNotInRusselSet russelSetIsInRusselSet
 ```
 
+## Possible fix
+This inconsistency is due to the lack of implementation of the universe level checking: currently `Type` has type `Type`. Once proper universe level checking will be implemented, this proof would no longer typecheck, and this inconsistency would not be present.
+
 ## Acknowledgements
 Dr. Liam O'Connor's article ["The Trouble with Typing Type as Type"](http://liamoc.net/posts/2015-09-10-girards-paradox.html) that demonstrates the implementation of a similar proof in Agda was of great help while working on this example.
