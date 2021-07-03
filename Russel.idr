@@ -30,6 +30,7 @@ setInRusselSetNotContainsItself (MkDPair (MkDPair fst y) snd) z = y (rewrite sym
 russelSetIsNotInRusselSet : notIsElement RusselSet RusselSet
 russelSetIsNotInRusselSet x = (setInRusselSetNotContainsItself x) x 
 
+-- By applying lemma setIsInRusselSet we can show that it means that the set is in Russel set
 russelSetIsInRusselSet : isElement RusselSet RusselSet
 russelSetIsInRusselSet = setIsInRusselSet russelSetIsNotInRusselSet
 

@@ -46,12 +46,14 @@ russelSetIsNotInRusselSet x = (setInRusselSetNotContainsItself x) x
 
 However, according to one of our lemmas, that means that Russel set contains itself. 
 ```idris
-
+russelSetIsInRusselSet : isElement RusselSet RusselSet
+russelSetIsInRusselSet = setIsInRusselSet russelSetIsNotInRusselSet
 ```
 
 Finally, since we defined not being an element of a set as a function `notIsElement x y = (isElement x y) -> Void`, that allows us to derive a term of type Void, leading to a contradiction.
 ```idris
-
+falso : Void
+falso = russelSetIsNotInRusselSet russelSetIsInRusselSet
 ```
 
 ## Acknowledgements
