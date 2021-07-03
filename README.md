@@ -1,5 +1,5 @@
 # idris2-russel
-Implementation of Russel paradox in Idris 2 that results in contradiction. 
+Implementation of Russel paradox in Idris 2.
 
 ## Version info
 This proof is known to successfully type-check in Idris 2 0.4.0-2865a70a6.
