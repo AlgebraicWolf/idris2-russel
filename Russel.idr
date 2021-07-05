@@ -10,7 +10,7 @@ isElement x (SET a f) = DPair a (\t => x = f t)
 ||| Similarly, x is not an element of y iff we can construct Void from 
 ||| the assumption that it is an element.
 notIsElement : Set -> Set -> Type
-notIsElement x y = (isElement x y) -> Void
+notIsElement x y = isElement x y -> Void
 
 ||| Set of all sets that do not contain themselves. We build it on type of 
 ||| dependent pairs of sets equipped with a proof
@@ -24,7 +24,7 @@ setIsInRusselSet {x} f = ((x ** f) ** Refl)
 
 -- Vice versa, each set in Russel set does not contain itself
 setInRusselSetNotContainsItself : {x : Set} -> isElement x RusselSet -> notIsElement x x 
-setInRusselSetNotContainsItself (MkDPair (MkDPair fst y) snd) z = y (rewrite sym snd in z)
+setInRusselSetNotContainsItself ((fst ** y) ** snd) z = y (rewrite sym snd in z)
 
 -- Russel set does not contain itself
 russelSetIsNotInRusselSet : notIsElement RusselSet RusselSet
@@ -38,4 +38,8 @@ russelSetIsInRusselSet = setIsInRusselSet russelSetIsNotInRusselSet
 -- itself, leading to a contradiction. We can use this to construct term of Void.
 falso : Void
 falso = russelSetIsNotInRusselSet russelSetIsInRusselSet
+
+-- Example of a proof of an obviously false judgement
+allNatsAreEqual : {n : Nat} -> {m : Nat} -> n = m
+allNatsAreEqual = absurd falso
 
