@@ -1,5 +1,5 @@
 # idris2-russel
-Implementation of Russel paradox in Idris 2 that results in contradiction. 
+Implementation of Russel paradox in Idris 2.
 
 ## Version info
 This proof is known to successfully type-check in Idris 2 0.4.0-2865a70a6.
@@ -55,6 +55,9 @@ Finally, since we defined not being an element of a set as a function `notIsElem
 falso : Void
 falso = russelSetIsNotInRusselSet russelSetIsInRusselSet
 ```
+
+## Possible fix
+This inconsistency is due to the lack of implementation of the universe level checking: currently `Type` has type `Type`. Once proper universe level checking will be implemented, this proof would no longer typecheck, and this inconsistency would not be present.
 
 ## Acknowledgements
 Dr. Liam O'Connor's article ["The Trouble with Typing Type as Type"](http://liamoc.net/posts/2015-09-10-girards-paradox.html) that demonstrates the implementation of a similar proof in Agda was of great help while working on this example.
